@@ -1,0 +1,84 @@
+﻿@{ 
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/style.css")    
+    <script src='@Url.Content("~/Scripts/jquery-1.10.2.min.js")' type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#showLeft").click(function () {
+                $('.dropdown-toggle').dropdown()
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="row topStyle">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-3">
+                    <img class="topicon" src="~/Content/images/icon.gif" alt="Alternate Text" />
+                    <h3 class="topHeading">La Villa Italia</h3>
+                </div>
+                <div class="col-md-3">                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="icon"> 
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-list fonting"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Staff", "Create", "Staffs")</li>
+                            <li>@Html.ActionLink("Login", "View", "Storage")</li>
+                        </ul>
+                    </div>
+                </div>
+                <menu>                                            
+                    <ul>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                                @Html.ActionLink("Home", "Index", "Home")
+                        </li>   
+
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Gallery" ? "active" : "")">
+                                @Html.ActionLink("Gallery", "Gallery", "Home")
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Partners" ? "active" : "")">
+                                @Html.ActionLink("Partners", "Partners", "Home")
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "About" ? "active" : "")">
+                                @Html.ActionLink("About us", "About", "Home")
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Menu" ? "active" : "")">
+                                @Html.ActionLink("Menu", "Menu", "Home")
+                        </li>
+                    </ul>
+                </menu>
+            </div>
+        </div>
+
+    </div>
+    @*<div class="container-fluid">*@
+        @RenderBody()
+        @*<footer class="footer">
+            
+        </footer>
+    </div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
